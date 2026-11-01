@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Login - Smart College Transportation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="15" rx="3"></rect>
+            <path d="M3 9h18"></path>
+            <path d="M8 18v2"></path>
+            <path d="M16 18v2"></path>
+            <circle cx="7" cy="14" r="1.5" fill="#ffffff"></circle>
+            <circle cx="17" cy="14" r="1.5" fill="#ffffff"></circle>
+          </svg>
+        </div>
+        <span>Smart Transport Management</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="student-login.html" class="nav-link active">Student</a></li>
+          <li><a href="driver-login.html" class="nav-link">Driver</a></li>
+          <li><a href="management-login.html" class="nav-link">Management</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Login Form Wrapper -->
+  <main class="login-page-wrap">
+    <div class="login-card">
+
+      <!-- Header with Student Icon -->
+      <div class="login-header">
+        <div class="login-role-icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
+        </div>
+        <h1 class="login-title">Student Login</h1>
+        <p class="login-subtitle">Enter your college credentials to view your bus pass &amp; route</p>
+      </div>
+
+      {{loginMessage}}
+
+      <!-- Login form processed by the Java server -->
+      <form action="login" method="post">
+        <input type="hidden" name="role" value="student">
+        
+        <div class="form-group">
+          <label class="form-label" for="studentId">Student ID / Roll No</label>
+          <input type="text" id="studentId" name="userId" class="form-control" placeholder="Enter student ID / roll number" required>
+        </div>
+
+        <div class="form-group password-field-group">
+          <label class="form-label" for="password">Password</label>
+          <div class="password-input-wrapper">
+            <input type="checkbox" id="toggle-student-password" class="password-toggle-checkbox" tabindex="-1" aria-label="Toggle password visibility">
+            <input type="text" id="password" name="password" class="form-control password-toggle-input" placeholder="Enter student password" required autocomplete="current-password">
+            <label for="toggle-student-password" class="password-toggle-label" title="Toggle password visibility" aria-label="Show or hide password">
+              <svg class="eye-icon eye-icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <svg class="eye-icon eye-icon-closed" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </label>
+          </div>
+        </div>
+
+        <div class="login-sub-actions">
+          <a href="reset-password.html?role=student" class="forgot-password-link">&#128273; Forgot Password? / Reset Password</a>
+        </div>
+
+        <div class="login-actions">
+          <button type="submit" class="btn btn-primary" id="btn-submit-student">Login to Student Dashboard</button>
+        </div>
+
+      </form>
+
+      <!-- Back to Home Link -->
+      <div>
+        <a href="index.html" class="back-home-link">
+          &larr; Back to Home Page
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-title">Smart College Transportation Management System</div>
+      <p>&copy; 2026 CIET Transportation Division.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

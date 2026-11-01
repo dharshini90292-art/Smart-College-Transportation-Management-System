@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - Smart Transport Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar"><div class="nav-container"><div class="nav-brand">Smart Transport Management - Student Portal</div><a class="nav-logout-btn" href="index.html">Logout</a></div></header>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-brand">Student Portal</div>
+      <nav class="sidebar-nav" aria-label="Student Dashboard Navigation">
+        <a href="student-dashboard.html" class="sidebar-link">Dashboard</a>
+        <a href="student-profile.html" class="sidebar-link active" aria-current="page">My Profile</a>
+        <a href="student-bus.html" class="sidebar-link">My Bus</a>
+        <a href="student-route.html" class="sidebar-link">My Route</a>
+        <a href="student-pickup-stop.html" class="sidebar-link">My Pickup Stop</a>
+        <a href="student-attendance.html" class="sidebar-link">My Attendance</a>
+        <a href="student-fees.html" class="sidebar-link">Transport Fees</a>
+        <a href="student-complaints.html" class="sidebar-link">Complaints</a>
+        <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+      </nav>
+    </aside>
+    <main class="dashboard-main">
+      <section class="dashboard-header"><div><span class="welcome-badge">Student Portal</span><h1 class="dashboard-user-title">My Profile</h1><p class="dashboard-user-subtitle">Personal and transportation account details.</p></div></section>
+      {{saveMessage}}
+      <!-- SAVE_MESSAGE -->
+      <article class="info-card profile-photo-card">
+        <div class="info-card-body profile-header-flex">
+          <div class="profile-avatar-wrapper">
+            <img src="{{profilePhotoUrl}}" alt="Student Profile Photo" class="profile-avatar-img">
+          </div>
+          <div class="profile-header-info">
+            <h2 style="margin:0 0 4px 0; color:var(--navy-primary, #ffffff);">{{name}}</h2>
+            <p style="margin:0 0 10px 0; color:var(--text-muted, #94a3b8);">Student ID: {{studentId}} &bull; Assigned Bus: {{assignedBus}}</p>
+            <form action="/upload-profile-photo" method="post" enctype="multipart/form-data" class="photo-upload-form">
+              <input type="file" name="profilePhoto" class="photo-file-input" accept=".jpg,.jpeg,.png" required>
+              <button type="submit" class="btn btn-primary btn-sm">Update Photo</button>
+            </form>
+          </div>
+        </div>
+      </article>
+      <article class="info-card"><div class="info-card-header"><h2 class="info-card-title">Student Details</h2></div><div class="info-card-body"><div class="details-grid">
+        <div class="detail-item"><div class="detail-label">Full Name</div><div class="detail-val">{{name}}</div></div>
+        <div class="detail-item"><div class="detail-label">Student ID</div><div class="detail-val">{{studentId}}</div></div>
+        <div class="detail-item"><div class="detail-label">Role</div><div class="detail-val">{{role}}</div></div>
+        <div class="detail-item"><div class="detail-label">Department</div><div class="detail-val">{{department}}</div></div>
+        <div class="detail-item"><div class="detail-label">Phone</div><div class="detail-val">{{phone}}</div></div>
+        <div class="detail-item"><div class="detail-label">Email</div><div class="detail-val">{{email}}</div></div>
+        <div class="detail-item"><div class="detail-label">Address</div><div class="detail-val">{{address}}</div></div>
+        <div class="detail-item"><div class="detail-label">Assigned Bus</div><div class="detail-val">{{assignedBus}}</div></div>
+        <div class="detail-item"><div class="detail-label">Pickup Stop</div><div class="detail-val">{{pickupStop}}</div></div>
+        <div class="detail-item"><div class="detail-label">Transport Authorization</div><div class="detail-val">{{transportStatus}}</div></div>
+      </div></div></article>
+      <details class="profile-editor">
+        <summary class="btn btn-primary">Edit Profile</summary>
+        <form action="student-profile.html" method="post" class="profile-edit-form">
+          <div class="details-grid">
+            <div class="form-group"><label class="form-label" for="student-name">Full Name</label><input class="form-control" id="student-name" name="name" type="text" value="{{name}}" required maxlength="100"></div>
+            <div class="form-group"><label class="form-label" for="student-phone">Phone Number</label><input class="form-control" id="student-phone" name="phone" type="tel" value="{{phone}}" maxlength="30" readonly></div>
+            <div class="form-group"><label class="form-label" for="student-email">Email</label><input class="form-control" id="student-email" name="email" type="email" value="{{email}}" maxlength="150" readonly></div>
+            <div class="form-group"><label class="form-label" for="student-address">Address</label><textarea class="form-control" id="student-address" name="address" maxlength="250" readonly>{{address}}</textarea></div>
+            <div class="form-group"><label class="form-label" for="student-pickup">Pickup Stop</label><input class="form-control" id="student-pickup" name="pickupStop" type="text" value="{{pickupStop}}" maxlength="100"></div>
+          </div>
+          <div class="profile-edit-actions">
+            <button class="btn btn-primary" type="submit">Save Changes</button>
+            <a class="btn btn-secondary" href="student-profile.html">Cancel</a>
+          </div>
+        </form>
+      </details>
+      <a class="btn btn-secondary page-back" href="student-dashboard.html">&larr; Back to Dashboard</a>
+    </main>
+  </div>
+</body>
+</html>

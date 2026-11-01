@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Students - Management Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar"><div class="nav-container"><div class="nav-brand">Smart Transport Management - Fleet Operations</div><a class="nav-logout-btn" href="index.html">Logout</a></div></header>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar"><div class="sidebar-brand">Management Portal</div><nav class="sidebar-nav" aria-label="Management Dashboard Navigation">
+      <a href="management-profile.html" class="sidebar-link">My Profile</a><a href="management-dashboard.html" class="sidebar-link">Dashboard</a>
+      <a href="management-buses.html" class="sidebar-link">Buses</a><a href="management-students.html" class="sidebar-link active" aria-current="page">Students</a>
+      <a href="management-drivers.html" class="sidebar-link">Drivers</a><a href="management-stops.html" class="sidebar-link">Pickup Stops</a>
+      <a href="management-attendance.html" class="sidebar-link">Attendance</a><a href="management-fees.html" class="sidebar-link">Transport Fees</a>
+      <a href="management-complaints.html" class="sidebar-link">Review Complaints</a><a href="management-breakdown.html" class="sidebar-link">Breakdown Reports</a>
+      <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+    </nav></aside>
+    <main class="dashboard-main">
+      <section class="dashboard-header"><div><span class="welcome-badge">Student Records</span><h1 class="dashboard-user-title">Students</h1><p class="dashboard-user-subtitle">Register students and review saved transport assignments.</p></div></section>
+      <!-- REGISTRATION_MESSAGE -->
+      <article class="info-card registration-card">
+        <div class="info-card-header">
+          <h2 class="info-card-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <line x1="20" y1="8" x2="20" y2="14"></line>
+              <line x1="23" y1="11" x2="17" y2="11"></line>
+            </svg>
+            Register New Student
+          </h2>
+        </div>
+        <div class="info-card-body">
+          <form action="/add-student" method="post" class="registration-form">
+            <div class="form-group">
+              <label class="form-label" for="studentId">Student ID</label>
+              <input class="form-control" type="text" id="studentId" name="studentId" maxlength="30" placeholder="Enter student ID" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="studentName">Student Name</label>
+              <input class="form-control" type="text" id="studentName" name="studentName" maxlength="100" placeholder="Enter full name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="studentPassword">Login Password</label>
+              <input class="form-control" type="password" id="studentPassword" name="password" minlength="8" maxlength="128" autocomplete="new-password" placeholder="Create a password (at least 8 characters)" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="department">Department</label>
+              <select class="form-control" id="department" name="department" required>
+                <option value="">Select a department</option>
+                <!-- DEPARTMENT_OPTIONS -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="academicYear">Academic Year</label>
+              <select class="form-control" id="academicYear" name="academicYear" required>
+                <option value="">Select academic year</option>
+                <option value="I Year">I Year</option>
+                <option value="II Year">II Year</option>
+                <option value="III Year">III Year</option>
+                <option value="IV Year">IV Year</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="busId">Assigned Bus</label>
+              <select class="form-control" id="busId" name="busId" required>
+                <option value="">Select a bus</option>
+                <!-- STUDENT_BUS_OPTIONS -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="pickupStop">Pickup Stop</label>
+              <input class="form-control" type="text" id="pickupStop" name="pickupStop" maxlength="100" placeholder="Enter pickup stop" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="authorized">Transport Authorization</label>
+              <select class="form-control" id="authorized" name="authorized" required>
+                <option value="">Select authorization status</option>
+                <option value="true">Authorized</option>
+                <option value="false">Not Authorized</option>
+              </select>
+            </div>
+            <div class="registration-actions">
+              <button type="submit" class="btn btn-primary" id="btn-register-student">Register Student</button>
+              <button type="reset" class="btn btn-secondary" id="btn-reset-student">Reset Form</button>
+            </div>
+          </form>
+        </div>
+      </article>
+
+      <!-- Reset Student Password Card (Management Only) -->
+      <article class="info-card registration-card" id="card-reset-password">
+        <div class="info-card-header">
+          <h2 class="info-card-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            Reset Student Password
+          </h2>
+          <span class="badge badge-warning" style="color: #92400e; background-color: var(--bus-yellow-light);">PBKDF2 Secure Hash &bull; Management Authorization</span>
+        </div>
+        <div class="info-card-body">
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px;">
+            Reset the login credentials for an existing student when the original password is forgotten. The new password will be encrypted using standard PBKDF2WithHmacSHA256 (210,000 iterations). No other student records or transport assignments are altered.
+          </p>
+          <form action="/reset-student-password" method="post" class="registration-form">
+            <div class="form-group">
+              <label class="form-label" for="resetStudentId">Select Registered Student</label>
+              <select class="form-control" id="resetStudentId" name="studentId" required>
+                <option value="">Choose a student to reset password</option>
+                <!-- STUDENT_RESET_OPTIONS -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="newPassword">New Password</label>
+              <input class="form-control" type="password" id="newPassword" name="newPassword" minlength="8" maxlength="128" autocomplete="new-password" placeholder="Enter new password (at least 8 characters)" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="confirmPassword">Confirm New Password</label>
+              <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" minlength="8" maxlength="128" autocomplete="new-password" placeholder="Confirm new password" required>
+            </div>
+            <div class="registration-actions">
+              <button type="submit" class="btn btn-primary" id="btn-submit-reset-password" style="background: linear-gradient(135deg, #ffd700, #d4af37); color: #0b1324; border-color: #ffd700; font-weight: 700;">&#128273; Reset Password</button>
+              <button type="reset" class="btn btn-secondary" id="btn-clear-reset-password">Clear Form</button>
+            </div>
+          </form>
+        </div>
+      </article>
+
+      <article class="info-card">
+        <div class="info-card-header">
+          <h2 class="info-card-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            Registered Students
+          </h2>
+        </div>
+        <div class="info-card-body" style="padding:0"><div class="table-responsive"><table class="data-table">
+          <thead><tr><th>Photo</th><th>Student ID</th><th>Name</th><th>Department</th><th>Academic Year</th><th>Bus</th><th>Pickup Stop</th><th>Transport Authorization</th><th>Action</th></tr></thead>
+          <tbody><!-- STUDENT_ROWS --></tbody>
+        </table></div></div>
+      </article>
+      <a class="btn btn-secondary page-back" href="management-dashboard.html">&larr; Back to Dashboard</a>
+    </main>
+  </div>
+</body>
+</html>

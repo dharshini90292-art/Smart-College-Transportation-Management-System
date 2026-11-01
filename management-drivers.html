@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drivers - Management Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar"><div class="nav-container"><div class="nav-brand">Smart Transport Management - Fleet Operations</div><a class="nav-logout-btn" href="index.html">Logout</a></div></header>
+  <div class="dashboard-layout"><aside class="dashboard-sidebar"><div class="sidebar-brand">Management Portal</div><nav class="sidebar-nav" aria-label="Management Dashboard Navigation">
+    <a href="management-profile.html" class="sidebar-link">My Profile</a><a href="management-dashboard.html" class="sidebar-link">Dashboard</a>
+    <a href="management-buses.html" class="sidebar-link">Buses</a><a href="management-students.html" class="sidebar-link">Students</a>
+    <a href="management-drivers.html" class="sidebar-link active" aria-current="page">Drivers</a><a href="management-stops.html" class="sidebar-link">Pickup Stops</a>
+    <a href="management-attendance.html" class="sidebar-link">Attendance</a><a href="management-fees.html" class="sidebar-link">Transport Fees</a>
+    <a href="management-complaints.html" class="sidebar-link">Review Complaints</a><a href="management-breakdown.html" class="sidebar-link">Breakdown Reports</a>
+    <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+  </nav></aside>
+  <main class="dashboard-main">
+    <section class="dashboard-header"><div><span class="welcome-badge">Staff Records</span><h1 class="dashboard-user-title">Drivers</h1><p class="dashboard-user-subtitle">Register drivers and review staff assignments.</p></div></section>
+    <!-- REGISTRATION_MESSAGE -->
+    {{registrationMessage}}
+    <article class="info-card registration-card">
+      <div class="info-card-header">
+        <h2 class="info-card-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <line x1="20" y1="8" x2="20" y2="14"></line>
+            <line x1="23" y1="11" x2="17" y2="11"></line>
+          </svg>
+          Register New Driver
+        </h2>
+      </div>
+      <div class="info-card-body">
+        <form action="/add-driver" method="post" class="registration-form">
+          <div class="form-group">
+            <label class="form-label" for="driverId">Driver ID</label>
+            <input class="form-control" type="text" id="driverId" name="driverId" maxlength="30" placeholder="Enter driver ID (e.g. DRV-02)" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="driverName">Driver Name</label>
+            <input class="form-control" type="text" id="driverName" name="driverName" maxlength="100" placeholder="Enter driver name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="driverPhone">Phone Number</label>
+            <input class="form-control" type="tel" id="driverPhone" name="phoneNumber" maxlength="32" placeholder="Enter phone number">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="driverEmail">Email Address</label>
+            <input class="form-control" type="email" id="driverEmail" name="email" maxlength="150" placeholder="e.g. driver@ciet.edu">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="driverAddress">Residential Address</label>
+            <input class="form-control" type="text" id="driverAddress" name="address" maxlength="250" placeholder="Enter residential address">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="driverLicenseNumber">Driving Licence Number</label>
+            <input class="form-control" type="text" id="driverLicenseNumber" name="licenseNumber" maxlength="50" placeholder="Enter licence number">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="driverLicenseClass">Licence Class</label>
+            <input class="form-control" type="text" id="driverLicenseClass" name="licenseClass" maxlength="50" placeholder="e.g. Heavy Transport Vehicle (HTV)">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="driverLicenseExpiry">Licence Expiry Date</label>
+            <input class="form-control" type="date" id="driverLicenseExpiry" name="licenseExpiry">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="driverPassword">Login Password</label>
+            <input class="form-control" type="password" id="driverPassword" name="password" minlength="8" maxlength="128" autocomplete="new-password" placeholder="Create a password (at least 8 characters)" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="driverBus">Assigned Bus</label>
+            <select class="form-control" id="driverBus" name="busId" required>
+              <option value="">Select a bus</option>
+              <!-- DRIVER_BUS_OPTIONS -->
+              {{busOptions}}
+            </select>
+          </div>
+          <div class="registration-actions" style="grid-column: 1 / -1;">
+            <button type="submit" class="btn btn-primary" id="btn-register-driver">Register Driver</button>
+            <button type="reset" class="btn btn-secondary" id="btn-reset-driver">Reset Form</button>
+          </div>
+        </form>
+      </div>
+    </article>
+    <article class="info-card">
+      <div class="info-card-header"><h2 class="info-card-title">Registered Drivers</h2></div>
+      <div class="info-card-body" style="padding:0">
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead><tr><th>Photo</th><th>Driver ID</th><th>Name</th><th>Contact</th><th>Assigned Bus</th><th>Licence No</th><th>Status</th></tr></thead>
+            <tbody>
+              {{driverRows}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+    <a class="btn btn-secondary page-back" href="management-dashboard.html">&larr; Back to Dashboard</a>
+  </main></div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard - Smart College Transportation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="overview-dashboard">
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="15" rx="3"></rect>
+            <path d="M3 9h18"></path>
+            <path d="M8 18v2"></path>
+            <path d="M16 18v2"></path>
+            <circle cx="7" cy="14" r="1.5" fill="#ffffff"></circle>
+            <circle cx="17" cy="14" r="1.5" fill="#ffffff"></circle>
+          </svg>
+        </div>
+        <span>Smart Transport Management</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="student-dashboard.html" class="nav-link active">Dashboard</a></li>
+          <li><a href="index.html" class="nav-logout-btn">Logout &rarr;</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-brand">Student Portal</div>
+      <nav class="sidebar-nav" aria-label="Student Dashboard Navigation">
+        <a href="student-dashboard.html" class="sidebar-link active" aria-current="page">Dashboard</a>
+        <a href="student-profile.html" class="sidebar-link">My Profile</a>
+        <a href="student-bus.html" class="sidebar-link">My Bus</a>
+        <a href="student-route.html" class="sidebar-link">My Route</a>
+        <a href="student-pickup-stop.html" class="sidebar-link">My Pickup Stop</a>
+        <a href="student-attendance.html" class="sidebar-link">My Attendance</a>
+        <a href="student-fees.html" class="sidebar-link">Transport Fees</a>
+        <a href="student-complaints.html" class="sidebar-link">Complaints</a>
+        <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <main class="dashboard-main">
+
+    <!-- Dashboard Welcome Header -->
+    <section class="dashboard-header" id="student-profile">
+      <div>
+        <span class="welcome-badge">Student Portal &bull; Academic Year 2026</span>
+        <h1 class="dashboard-user-title">Welcome, {{studentName}}</h1>
+        <p class="dashboard-user-subtitle">Roll No: {{studentId}} &bull; {{studentDepartment}} ({{studentAcademicYear}})</p>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <a href="student-profile.html" title="My Profile"><img src="{{studentPhotoUrl}}" alt="Profile Photo" class="profile-avatar-header"></a>
+        <span class="user-status-pill badge-success">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Transport Pass Active
+        </span>
+      </div>
+    </section>
+
+    <section class="dashboard-overview-links" aria-label="Student dashboard page links">
+      <a class="dashboard-overview-link" href="student-profile.html"><strong>My Profile</strong>View your student and contact details.</a>
+      <a class="dashboard-overview-link" href="student-bus.html"><strong>My Bus</strong>View your assigned bus information.</a>
+      <a class="dashboard-overview-link" href="student-route.html"><strong>My Route</strong>View route corridor and scheduled stops.</a>
+      <a class="dashboard-overview-link" href="student-pickup-stop.html"><strong>My Pickup Stop</strong>Check your stop and pickup schedule.</a>
+      <a class="dashboard-overview-link" href="student-attendance.html"><strong>My Attendance</strong>Review your boarding attendance.</a>
+      <a class="dashboard-overview-link" href="student-fees.html"><strong>Transport Fees</strong>Review your fee and payment status.</a>
+      <a class="dashboard-overview-link" href="student-complaints.html"><strong>Complaints</strong>Submit a complaint and review its status.</a>
+    </section>
+
+    <!-- Top 4 Quick Stat Summary Cards -->
+    <section class="stats-grid" id="student-bus">
+
+      <!-- Stat 1: Assigned Bus -->
+      <div class="stat-card">
+        <div class="stat-icon warning">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="15" rx="3"></rect>
+            <path d="M3 9h18"></path>
+            <circle cx="7" cy="14" r="1.5"></circle>
+            <circle cx="17" cy="14" r="1.5"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="stat-value">{{studentBus}}</div>
+          <div class="stat-label">Assigned Transit Fleet</div>
+        </div>
+      </div>
+
+      <!-- Stat 2: Pickup Stop -->
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="stat-value">{{studentPickupStop}}</div>
+          <div class="stat-label">Designated Boarding Stop</div>
+        </div>
+      </div>
+
+      <!-- Stat 3: Today's Attendance -->
+      <div class="stat-card">
+        <div class="stat-icon success">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div>
+          <div class="stat-value" style="color: var(--green-success);">{{studentAttendanceStatus}}</div>
+          <div class="stat-label">Today's Attendance Status</div>
+        </div>
+      </div>
+
+
+    </section>
+
+    <!-- Transport Authorization & Fee Status Card -->
+    <div class="summary-cards-row" id="student-fees">
+
+      <!-- Pass Authorization -->
+      <article class="summary-card" style="grid-column: 1 / -1;">
+        <h3 class="summary-card-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          Transport Authorization Status
+        </h3>
+        <p style="margin-bottom: 12px; font-size: 0.92rem; color: var(--text-body);">
+          Digital NFC RFID Smart Bus Pass issued by CIET Transport Directorate.
+        </p>
+        <div style="background: #ffffff; border: 1px solid var(--border-light); padding: 14px; border-radius: var(--radius-sm);">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 0.82rem; color: var(--text-muted);">Pass ID:</span>
+            <strong style="color: var(--navy-primary);">TR-PASS-{{studentId}}</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 0.82rem; color: var(--text-muted);">Authorization:</span>
+            <span class="badge badge-success">Authorized &bull; Active</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="font-size: 0.82rem; color: var(--text-muted);">Validity:</span>
+            <strong>2026-2027</strong>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-title">Smart College Transportation Management System</div>
+      <p>&copy; 2026 CIET Transportation Division.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

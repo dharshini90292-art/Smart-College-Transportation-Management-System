@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Route - Driver Transit Console</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .filter-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      background: var(--bg-card);
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      margin-bottom: 24px;
+    }
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .filter-group label {
+      font-weight: 600;
+      color: var(--navy-primary);
+      font-size: 0.9rem;
+    }
+    .filter-group input {
+      background: #111;
+      border: 1px solid var(--border-light);
+      color: var(--text-body);
+      padding: 7px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body class="routes-dashboard driver-route-page">
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="15" rx="3"></rect>
+            <path d="M3 9h18"></path>
+            <path d="M8 18v2"></path>
+            <path d="M16 18v2"></path>
+            <circle cx="7" cy="14" r="1.5" fill="#ffffff"></circle>
+            <circle cx="17" cy="14" r="1.5" fill="#ffffff"></circle>
+          </svg>
+        </div>
+        <span>Smart Transport Management - Driver Console</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="driver-dashboard.html" class="nav-link">Dashboard</a></li>
+          <li><a href="logout" class="nav-logout-btn">Logout &rarr;</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+    <!-- Driver Sidebar Navigation -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-brand">Driver Console</div>
+      <nav class="sidebar-nav" aria-label="Driver Dashboard Navigation">
+        <a href="driver-dashboard.html" class="sidebar-link">Dashboard</a>
+        <a href="driver-profile.html" class="sidebar-link">My Profile</a>
+        <a href="driver-bus.html" class="sidebar-link">Driver's Bus</a>
+        <a href="driver-route.html" class="sidebar-link active" aria-current="page">My Route</a>
+        <a href="driver-pickup-list.html" class="sidebar-link">Student Pickup List</a>
+        <a href="driver-attendance.html" class="sidebar-link">Student Attendance</a>
+        <a href="driver-bus-status.html" class="sidebar-link">Bus Status</a>
+        <a href="driver-breakdown.html" class="sidebar-link">Breakdown Reports</a>
+        <a href="driver-complaints.html" class="sidebar-link">Complaints</a>
+        <a href="logout" class="sidebar-link sidebar-logout-link">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <main class="dashboard-main">
+
+      <!-- Header -->
+      <section class="dashboard-header" id="driver-route-header">
+        <div>
+          <span class="welcome-badge" style="background-color: var(--bus-yellow-light); color: var(--navy-primary);">
+            Driver Operations &bull; Active Bus Route
+          </span>
+          <h1 class="dashboard-user-title">My Bus Route &bull; Real Interactive Road Map</h1>
+          <p class="dashboard-user-subtitle">Assigned Bus: {{driverBus}} &bull; Driver: {{driverName}} (Staff ID: {{driverId}})</p>
+        </div>
+        <div>
+          <span class="user-status-pill badge-success">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Live Road Route Active
+          </span>
+        </div>
+      </section>
+
+      {{recalculationNotice}}
+
+      <!-- Date Filter & Recalculate Toolbar -->
+      <div class="filter-toolbar">
+        <form method="GET" action="/driver-route.html" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+          <div class="filter-group">
+            <label for="routeDate">Route Date:</label>
+            <input type="date" id="routeDate" name="date" value="{{selectedDate}}">
+          </div>
+          <button type="submit" class="btn btn-primary" style="padding:7px 16px;">View Route</button>
+        </form>
+
+        <form method="POST" action="/recalculate-route" style="display:inline-block;margin:0 0 0 auto;">
+          <input type="hidden" name="busId" value="{{busId}}">
+          <input type="hidden" name="date" value="{{selectedDate}}">
+          <button type="submit" class="btn btn-secondary" style="padding:7px 16px;font-weight:600;">&#8635; Recalculate Route</button>
+        </form>
+      </div>
+
+      <!-- Route Overview Card -->
+      <article class="info-card" id="driver-route-overview">
+        <div class="info-card-header">
+          <h2 class="info-card-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            Assigned Bus Route: {{driverBus}} &bull; Date: {{selectedDate}} &bull; Destination: Campus
+          </h2>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span class="badge badge-info">{{assignedStudentCount}} Students On Bus</span>
+            <span class="badge badge-neutral" style="font-size:0.8rem;">Last Updated: {{lastUpdatedTime}}</span>
+          </div>
+        </div>
+        <div class="info-card-body">
+          <div class="details-grid" style="margin-bottom: 20px;">
+            <div class="detail-item"><div class="detail-label">Vehicle Registration</div><div class="detail-val">{{driverBus}}</div></div>
+            <div class="detail-item"><div class="detail-label">Fleet ID</div><div class="detail-val">{{busId}}</div></div>
+            <div class="detail-item"><div class="detail-label">Route Corridor</div><div class="detail-val">{{routeName}}</div></div>
+            <div class="detail-item"><div class="detail-label">Total Road Distance</div><div class="detail-val">{{routeDistance}}</div></div>
+            <div class="detail-item"><div class="detail-label">Estimated Transit Time</div><div class="detail-val">{{routeDuration}} mins</div></div>
+            <div class="detail-item"><div class="detail-label">Campus Destination</div><div class="detail-val" style="color: var(--green-success); font-weight: 700;">Campus</div></div>
+          </div>
+
+          <!-- Real Interactive Leaflet Road Map -->
+          <div style="margin-bottom:24px;">
+            {{interactiveMapHtml}}
+          </div>
+
+          <!-- Required Stops Schedule in Visiting Order -->
+          <div style="margin-top: 26px;">
+            <h3 style="font-size: 1.1rem; color: var(--navy-primary); margin-bottom: 10px;">
+              Active Pickup Stops in Visiting Order (Destination: Campus)
+            </h3>
+            <ul class="stops-list">
+              {{pickupRows}}
+            </ul>
+          </div>
+
+          <!-- Skipped Stops Section -->
+          <div style="margin-top: 24px;">
+            <h3 style="font-size: 1.1rem; color: var(--navy-primary); margin-bottom: 10px;">
+              Skipped Pickup Stops &amp; Reasons
+            </h3>
+            <ul class="stops-list">
+              {{skippedRows}}
+            </ul>
+          </div>
+
+          <!-- Stops with Unconfirmed Attendance & Assignment Warnings -->
+          <div style="margin-top: 24px;">
+            <h3 style="font-size: 1.1rem; color: var(--navy-primary); margin-bottom: 10px;">
+              Stops with Unconfirmed Attendance &amp; Assignment Safeguards
+            </h3>
+            <ul class="stops-list">
+              {{unconfirmedRows}}
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <a class="btn btn-secondary page-back" href="driver-dashboard.html">&larr; Back to Dashboard</a>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-title">Smart College Transportation Management System</div>
+      <p>&copy; 2026 CIET Transportation Division. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

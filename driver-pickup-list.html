@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Pickup List - Driver Transit Console</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar"><div class="nav-container"><div class="nav-brand">Smart Transport Management - Driver Console</div><a class="nav-logout-btn" href="index.html">Logout</a></div></header>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar"><div class="sidebar-brand">Driver Console</div><nav class="sidebar-nav" aria-label="Driver Dashboard Navigation">
+      <a href="driver-dashboard.html" class="sidebar-link">Dashboard</a>
+      <a href="driver-profile.html" class="sidebar-link">My Profile</a>
+      <a href="driver-bus.html" class="sidebar-link">Driver's Bus</a>
+      <a href="driver-route.html" class="sidebar-link">My Route</a>
+      <a href="driver-pickup-list.html" class="sidebar-link active" aria-current="page">Student Pickup List</a>
+      <a href="driver-attendance.html" class="sidebar-link">Student Attendance</a>
+      <a href="driver-bus-status.html" class="sidebar-link">Bus Status</a>
+      <a href="driver-breakdown.html" class="sidebar-link">Breakdown Reports</a>
+      <a href="driver-complaints.html" class="sidebar-link">Complaints</a>
+      <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+    </nav></aside>
+    <main class="dashboard-main">
+      <section class="dashboard-header"><div><span class="welcome-badge">{{driverBus}} &bull; Today's Manifest</span><h1 class="dashboard-user-title">Today's Pickup List</h1><p class="dashboard-user-subtitle">All students assigned to {{driverBus}} ordered along corridor stops (Stop 1 to 10).</p></div></section>
+      <article class="info-card"><div class="info-card-header"><h2 class="info-card-title">Today's Pickup List</h2></div><div class="info-card-body" style="padding:0"><div class="table-responsive"><table class="data-table">
+        <thead><tr><th>Student ID</th><th>Student Name</th><th>Pickup Stop</th><th>Attendance</th></tr></thead>
+        <tbody>
+          {{pickupListRows}}
+        </tbody>
+      </table></div></div></article>
+      <a class="btn btn-secondary page-back" href="driver-dashboard.html">&larr; Back to Dashboard</a>
+    </main>
+  </div>
+</body>
+</html>

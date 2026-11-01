@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transport Fees - Student Transit Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar"><div class="nav-container"><div class="nav-brand">Smart Transport Management - Student Portal</div><a class="nav-logout-btn" href="index.html">Logout</a></div></header>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-brand">Student Portal</div>
+      <nav class="sidebar-nav" aria-label="Student Dashboard Navigation">
+        <a href="student-dashboard.html" class="sidebar-link">Dashboard</a>
+        <a href="student-profile.html" class="sidebar-link">My Profile</a>
+        <a href="student-bus.html" class="sidebar-link">My Bus</a>
+        <a href="student-route.html" class="sidebar-link">My Route</a>
+        <a href="student-pickup-stop.html" class="sidebar-link">My Pickup Stop</a>
+        <a href="student-attendance.html" class="sidebar-link">My Attendance</a>
+        <a href="student-fees.html" class="sidebar-link active" aria-current="page">Transport Fees</a>
+        <a href="student-complaints.html" class="sidebar-link">Complaints</a>
+        <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+      </nav>
+    </aside>
+    <main class="dashboard-main">
+      <section class="dashboard-header"><div><span class="welcome-badge">Fee Records</span><h1 class="dashboard-user-title">Transport Fees</h1><p class="dashboard-user-subtitle">Annual transport fee and receipt information.</p></div></section>
+      <article class="info-card"><div class="info-card-header"><h2 class="info-card-title">Fee Records</h2></div><div class="info-card-body">
+        {{studentFeeContent}}
+      </div></article>
+      <a class="btn btn-secondary page-back" href="student-dashboard.html">&larr; Back to Dashboard</a>
+    </main>
+  </div>
+</body>
+</html>

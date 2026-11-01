@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - Management Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar"><div class="nav-container"><div class="nav-brand">Smart Transport Management - Fleet Operations</div><a class="nav-logout-btn" href="index.html">Logout</a></div></header>
+  <div class="dashboard-layout"><aside class="dashboard-sidebar"><div class="sidebar-brand">Management Portal</div><nav class="sidebar-nav" aria-label="Management Dashboard Navigation">
+    <a href="management-profile.html" class="sidebar-link active" aria-current="page">My Profile</a>
+    <a href="management-dashboard.html" class="sidebar-link">Dashboard</a>
+    <a href="management-buses.html" class="sidebar-link">Buses</a>
+    <a href="management-students.html" class="sidebar-link">Students</a>
+    <a href="management-drivers.html" class="sidebar-link">Drivers</a>
+    <a href="management-stops.html" class="sidebar-link">Pickup Stops</a>
+    <a href="management-attendance.html" class="sidebar-link">Attendance</a>
+    <a href="management-fees.html" class="sidebar-link">Transport Fees</a>
+    <a href="management-complaints.html" class="sidebar-link">Review Complaints</a>
+    <a href="management-breakdown.html" class="sidebar-link">Breakdown Reports</a>
+    <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+  </nav></aside>
+  <main class="dashboard-main">
+    <section class="dashboard-header"><div><span class="welcome-badge">Administrative Command</span><h1 class="dashboard-user-title">My Profile</h1><p class="dashboard-user-subtitle">Management account and campus contact details.</p></div></section>
+    {{saveMessage}}
+    <article class="info-card profile-photo-card">
+      <div class="info-card-body profile-header-flex">
+        <div class="profile-avatar-wrapper">
+          <img src="{{profilePhotoUrl}}" alt="Management Profile Photo" class="profile-avatar-img">
+        </div>
+        <div class="profile-header-info">
+          <h2 style="margin:0 0 4px 0; color:var(--navy-primary, #ffffff);">{{name}}</h2>
+          <p style="margin:0 0 10px 0; color:var(--text-muted, #94a3b8);">Management ID: {{adminId}} &bull; Role: {{role}}</p>
+          <form action="/upload-profile-photo" method="post" enctype="multipart/form-data" class="photo-upload-form">
+            <input type="file" name="profilePhoto" class="photo-file-input" accept=".jpg,.jpeg,.png" required>
+            <button type="submit" class="btn btn-primary btn-sm">Update Photo</button>
+          </form>
+        </div>
+      </div>
+    </article>
+    <article class="info-card"><div class="info-card-header"><h2 class="info-card-title">Management Details</h2></div><div class="info-card-body"><div class="details-grid">
+      <div class="detail-item"><div class="detail-label">Name</div><div class="detail-val">{{name}}</div></div>
+      <div class="detail-item"><div class="detail-label">Management ID</div><div class="detail-val">{{adminId}}</div></div>
+      <div class="detail-item"><div class="detail-label">Role</div><div class="detail-val">{{role}}</div></div>
+      <div class="detail-item"><div class="detail-label">Organization</div><div class="detail-val">{{organization}}</div></div>
+      <div class="detail-item"><div class="detail-label">Contact</div><div class="detail-val">{{phone}}</div></div>
+      <div class="detail-item"><div class="detail-label">Duty</div><div class="detail-val">{{duty}}</div></div>
+    </div></div></article>
+
+    <!-- Reset Management Password Card (Authenticated Administrator) -->
+    <article class="info-card registration-card" id="card-reset-mgmt-password">
+      <div class="info-card-header">
+        <h2 class="info-card-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          Reset Management Password
+        </h2>
+        <span class="badge badge-warning" style="color: #92400e; background-color: var(--bus-yellow-light);">PBKDF2 Secure Hash &bull; Authenticated Admin</span>
+      </div>
+      <div class="info-card-body">
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px;">
+          Update your management login credentials. Your new password will be hashed with PBKDF2WithHmacSHA256 (210,000 iterations).
+        </p>
+        <form action="/reset-management-password" method="post" class="registration-form">
+          <div class="form-group">
+            <label class="form-label" for="currentPassword">Current Password</label>
+            <input class="form-control" type="password" id="currentPassword" name="currentPassword" autocomplete="current-password" placeholder="Enter current password" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="mgmtNewPassword">New Password</label>
+            <input class="form-control" type="password" id="mgmtNewPassword" name="newPassword" minlength="8" maxlength="128" autocomplete="new-password" placeholder="Enter new password (at least 8 characters)" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="mgmtConfirmPassword">Confirm New Password</label>
+            <input class="form-control" type="password" id="mgmtConfirmPassword" name="confirmPassword" minlength="8" maxlength="128" autocomplete="new-password" placeholder="Confirm new password" required>
+          </div>
+          <div class="registration-actions">
+            <button type="submit" class="btn btn-primary" id="btn-submit-reset-mgmt-password" style="background: linear-gradient(135deg, #ffd700, #d4af37); color: #0b1324; border-color: #ffd700; font-weight: 700;">&#128273; Update Password</button>
+            <button type="reset" class="btn btn-secondary">Clear Form</button>
+          </div>
+        </form>
+      </div>
+    </article>
+
+    <a class="btn btn-secondary page-back" href="management-dashboard.html">&larr; Back to Dashboard</a>
+  </main></div>
+</body>
+</html>

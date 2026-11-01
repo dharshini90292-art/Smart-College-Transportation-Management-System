@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Pickup Stop - Student Transit Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar"><div class="nav-container"><div class="nav-brand">Smart Transport Management - Student Portal</div><a class="nav-logout-btn" href="index.html">Logout</a></div></header>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-brand">Student Portal</div>
+      <nav class="sidebar-nav" aria-label="Student Dashboard Navigation">
+        <a href="student-dashboard.html" class="sidebar-link">Dashboard</a>
+        <a href="student-profile.html" class="sidebar-link">My Profile</a>
+        <a href="student-bus.html" class="sidebar-link">My Bus</a>
+        <a href="student-route.html" class="sidebar-link">My Route</a>
+        <a href="student-pickup-stop.html" class="sidebar-link active" aria-current="page">My Pickup Stop</a>
+        <a href="student-attendance.html" class="sidebar-link">My Attendance</a>
+        <a href="student-fees.html" class="sidebar-link">Transport Fees</a>
+        <a href="student-complaints.html" class="sidebar-link">Complaints</a>
+        <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+      </nav>
+    </aside>
+    <main class="dashboard-main">
+      <section class="dashboard-header"><div><span class="welcome-badge">South Express Corridor</span><h1 class="dashboard-user-title">My Pickup Stop</h1><p class="dashboard-user-subtitle">Your designated boarding point and scheduled time.</p></div></section>
+      <article class="info-card"><div class="info-card-header"><h2 class="info-card-title">Designated Pickup Stop</h2><span class="badge badge-info">Stop #03</span></div><div class="info-card-body"><div class="details-grid">
+        <div class="detail-item"><div class="detail-label">Stop Name</div><div class="detail-val">Jayadeva Circle</div></div>
+        <div class="detail-item"><div class="detail-label">Scheduled Pickup</div><div class="detail-val">07:35 AM</div></div>
+        <div class="detail-item"><div class="detail-label">Assigned Bus</div><div class="detail-val">Bus #02</div></div>
+        <div class="detail-item"><div class="detail-label">Boarding Guidance</div><div class="detail-val">Arrive at least 5 minutes early</div></div>
+      </div></div></article>
+      <article class="info-card"><div class="info-card-header"><h2 class="info-card-title">South Express Stop Schedule</h2></div><div class="info-card-body"><ul class="stops-list">
+        <li class="stop-item"><div><span class="stop-name">Stop 01: Silk Board Junction</span><div class="stop-time">07:15 AM</div></div></li>
+        <li class="stop-item"><div><span class="stop-name">Stop 02: BTM 2nd Stage</span><div class="stop-time">07:25 AM</div></div></li>
+        <li class="stop-item"><div><span class="stop-name">Stop 03: Jayadeva Circle</span><div class="stop-time">07:35 AM - Your stop</div></div><span class="badge badge-success">Assigned</span></li>
+        <li class="stop-item"><div><span class="stop-name">Stop 04: Bannerghatta Road</span><div class="stop-time">07:45 AM</div></div></li>
+      </ul></div></article>
+      <a class="btn btn-secondary page-back" href="student-dashboard.html">&larr; Back to Dashboard</a>
+    </main>
+  </div>
+</body>
+</html>

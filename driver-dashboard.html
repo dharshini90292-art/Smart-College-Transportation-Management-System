@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driver Dashboard - Smart College Transportation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="overview-dashboard">
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="15" rx="3"></rect>
+            <path d="M3 9h18"></path>
+            <path d="M8 18v2"></path>
+            <path d="M16 18v2"></path>
+            <circle cx="7" cy="14" r="1.5" fill="#ffffff"></circle>
+            <circle cx="17" cy="14" r="1.5" fill="#ffffff"></circle>
+          </svg>
+        </div>
+        <span>Smart Transport Management</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="driver-dashboard.html" class="nav-link active">Dashboard</a></li>
+          <li><a href="index.html" class="nav-logout-btn">Logout &rarr;</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-brand">Driver Console</div>
+      <nav class="sidebar-nav" aria-label="Driver Dashboard Navigation">
+        <a href="driver-dashboard.html" class="sidebar-link active" aria-current="page">Dashboard</a>
+        <a href="driver-profile.html" class="sidebar-link">My Profile</a>
+        <a href="driver-bus.html" class="sidebar-link">Driver's Bus</a>
+        <a href="driver-route.html" class="sidebar-link">My Route</a>
+        <a href="driver-pickup-list.html" class="sidebar-link">Student Pickup List</a>
+        <a href="driver-attendance.html" class="sidebar-link">Student Attendance</a>
+        <a href="driver-bus-status.html" class="sidebar-link">Bus Status</a>
+        <a href="driver-breakdown.html" class="sidebar-link">Breakdown Reports</a>
+        <a href="driver-complaints.html" class="sidebar-link">Complaints</a>
+        <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <main class="dashboard-main">
+
+    <!-- Dashboard Welcome Header -->
+    <section class="dashboard-header" id="driver-profile">
+      <div>
+        <span class="welcome-badge" style="background-color: var(--bus-yellow-light); color: #b45309;">
+          Transport Operations &bull; Active Duty
+        </span>
+        <h1 class="dashboard-user-title">Welcome, Driver {{driverName}}</h1>
+        <p class="dashboard-user-subtitle">Staff ID: {{driverId}} &bull; Assigned Bus: {{driverBus}}</p>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <a href="driver-profile.html" title="My Profile"><img src="{{driverPhotoUrl}}" alt="Profile Photo" class="profile-avatar-header"></a>
+        <span class="user-status-pill badge-success">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Bus Operational &bull; Ready
+        </span>
+      </div>
+    </section>
+
+    <section class="dashboard-overview-links" aria-label="Driver dashboard page links">
+      <a class="dashboard-overview-link" href="driver-profile.html"><strong>My Profile</strong>View driver and contact information.</a>
+      <a class="dashboard-overview-link" href="driver-bus.html"><strong>Driver's Bus</strong>Review the assigned vehicle details.</a>
+      <a class="dashboard-overview-link" href="driver-route.html"><strong>My Route</strong>Check your route and scheduled stops.</a>
+      <a class="dashboard-overview-link" href="driver-pickup-list.html"><strong>Student Pickup List</strong>See students scheduled at each stop.</a>
+      <a class="dashboard-overview-link" href="driver-attendance.html"><strong>Student Attendance</strong>Review boarding and attendance records.</a>
+      <a class="dashboard-overview-link" href="driver-bus-status.html"><strong>Bus Status</strong>View the vehicle's current status.</a>
+      <a class="dashboard-overview-link" href="driver-breakdown.html"><strong>Breakdown Reports</strong>Review vehicle maintenance incidents.</a>
+      <a class="dashboard-overview-link" href="driver-complaints.html"><strong>Complaints</strong>Submit and review transport complaints.</a>
+    </section>
+
+    <!-- Prominent Bus Illustration & Vehicle Status Banner -->
+    <section class="hero-section" id="driver-route" style="padding: 24px 28px; margin-bottom: 26px;">
+      <div class="hero-text">
+        <span class="hero-badge" style="background-color: var(--bus-yellow-light); color: #92400e;">Fleet Vehicle Assignment</span>
+        <h2 style="color: var(--navy-primary); font-size: 1.6rem; margin-bottom: 8px;">
+          Assigned {{driverBus}}
+        </h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px;">
+          Operational Status: {{routeStatus}}
+        </p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <span class="badge badge-success">Vehicle Inspection: Passed</span>
+          <span class="badge badge-info">Speed Limiter: 50 km/h Active</span>
+          <span class="badge badge-warning">First Aid &amp; Fire Kit: Verified</span>
+        </div>
+      </div>
+
+      <!-- Prominent Bus Illustration -->
+      <div class="hero-illustration">
+        <div class="bus-visual-container">
+          <svg class="bus-svg" viewBox="0 0 260 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="130" cy="130" rx="100" ry="8" fill="#cbd5e1" opacity="0.6"/>
+            <rect x="25" y="30" width="200" height="75" rx="14" fill="#0f2b5c"/>
+            <rect x="40" y="24" width="170" height="8" rx="4" fill="#1b448a"/>
+            <rect x="25" y="76" width="200" height="8" fill="#f59e0b"/>
+            <path d="M185 38 H212 C217 38 220 42 220 47 V70 H185 V38 Z" fill="#e0f2fe"/>
+            <rect x="36" y="38" width="30" height="28" rx="4" fill="#e0f2fe"/>
+            <rect x="74" y="38" width="30" height="28" rx="4" fill="#e0f2fe"/>
+            <rect x="112" y="38" width="30" height="28" rx="4" fill="#e0f2fe"/>
+            <rect x="150" y="38" width="28" height="28" rx="4" fill="#e0f2fe"/>
+            <rect x="222" y="80" width="5" height="12" rx="2" fill="#fef08a"/>
+            <rect x="23" y="80" width="4" height="10" rx="1" fill="#ef4444"/>
+            <circle cx="68" cy="105" r="18" fill="#1e293b"/>
+            <circle cx="68" cy="105" r="8" fill="#94a3b8"/>
+            <circle cx="178" cy="105" r="18" fill="#1e293b"/>
+            <circle cx="178" cy="105" r="8" fill="#94a3b8"/>
+            <text x="60" y="93" fill="#ffffff" font-size="8.5" font-weight="700" font-family="sans-serif">BUS 02 &bull; 40 SEATER</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bus Capacity & Attendance Overview Cards -->
+    <section class="stats-grid" id="driver-bus">
+
+      <!-- Total Capacity -->
+      <div class="stat-card">
+        <div class="stat-icon warning">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="7" width="20" height="14" rx="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="stat-value">40 Seats</div>
+          <div class="stat-label">Bus Maximum Capacity</div>
+        </div>
+      </div>
+
+      <!-- Allocated Students -->
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="stat-value">{{assignedStudentCount}}</div>
+          <div class="stat-label">Students Assigned on Route</div>
+        </div>
+      </div>
+
+      <!-- Present Today -->
+      <div class="stat-card">
+        <div class="stat-icon success">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div>
+          <div class="stat-value" style="color: var(--green-success);">{{presentStudentCount}}</div>
+          <div class="stat-label">Present &bull; Onboard Bus</div>
+        </div>
+      </div>
+
+      <!-- Absent Today -->
+      <div class="stat-card">
+        <div class="stat-icon danger">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </div>
+        <div>
+          <div class="stat-value" style="color: var(--red-danger);">{{absentStudentCount}}</div>
+          <div class="stat-label">Absent Students Today</div>
+        </div>
+      </div>
+
+    </section>
+
+
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-title">Smart College Transportation Management System</div>
+      <p>&copy; 2026 CIET Transportation Division.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

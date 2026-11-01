@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bus - Student Transit Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar"><div class="nav-container"><div class="nav-brand">Smart Transport Management - Student Portal</div><a class="nav-logout-btn" href="index.html">Logout</a></div></header>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-brand">Student Portal</div>
+      <nav class="sidebar-nav" aria-label="Student Dashboard Navigation">
+        <a href="student-dashboard.html" class="sidebar-link">Dashboard</a>
+        <a href="student-profile.html" class="sidebar-link">My Profile</a>
+        <a href="student-bus.html" class="sidebar-link active" aria-current="page">My Bus</a>
+        <a href="student-route.html" class="sidebar-link">My Route</a>
+        <a href="student-pickup-stop.html" class="sidebar-link">My Pickup Stop</a>
+        <a href="student-attendance.html" class="sidebar-link">My Attendance</a>
+        <a href="student-fees.html" class="sidebar-link">Transport Fees</a>
+        <a href="student-complaints.html" class="sidebar-link">Complaints</a>
+        <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+      </nav>
+    </aside>
+    <main class="dashboard-main">
+      <section class="dashboard-header"><div><span class="welcome-badge">Student Transport</span><h1 class="dashboard-user-title">My Bus</h1><p class="dashboard-user-subtitle">Your assigned vehicle and driver information.</p></div></section>
+      
+      <!-- Assigned Vehicle Card -->
+      <article class="info-card">
+        <div class="info-card-header">
+          <h2 class="info-card-title">Assigned Vehicle</h2>
+          <span class="badge {{busBadgeClass}}">{{busStatus}}</span>
+        </div>
+        <div class="info-card-body">
+          <div class="details-grid">
+            <div class="detail-item"><div class="detail-label">Bus Number</div><div class="detail-val">{{busNumber}}</div></div>
+            <div class="detail-item"><div class="detail-label">Bus Identifier</div><div class="detail-val">{{busId}}</div></div>
+            <div class="detail-item"><div class="detail-label">Assigned Route</div><div class="detail-val">{{routeName}}</div></div>
+            <div class="detail-item"><div class="detail-label">Seating Capacity</div><div class="detail-val">{{busCapacity}}</div></div>
+            <div class="detail-item"><div class="detail-label">Your Pickup Stop</div><div class="detail-val">{{pickupStop}}</div></div>
+            <div class="detail-item"><div class="detail-label">Destination Campus</div><div class="detail-val">Campus</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Assigned Driver Card -->
+      <article class="info-card">
+        <div class="info-card-header">
+          <h2 class="info-card-title">Assigned Driver</h2>
+          <span class="badge {{driverBadgeClass}}">{{driverStatus}}</span>
+        </div>
+        <div class="info-card-body">
+          <div class="profile-header-flex" style="margin-bottom: 20px;">
+            <div class="profile-avatar-wrapper">
+              <img src="{{driverPhotoUrl}}" alt="Driver Profile Photo" class="profile-avatar-img">
+            </div>
+            <div class="profile-header-info">
+              <h3 style="margin:0 0 6px 0; color:var(--navy-primary, #ffffff); font-size:1.25rem;">{{driverName}}</h3>
+              <p style="margin:0; color:var(--text-muted, #94a3b8); font-size:0.9rem;">Driver ID: {{driverId}} &bull; Assigned Bus: {{driverBusDisplay}}</p>
+            </div>
+          </div>
+          <div class="details-grid">
+            <div class="detail-item"><div class="detail-label">Driver Name</div><div class="detail-val">{{driverName}}</div></div>
+            <div class="detail-item"><div class="detail-label">Contact Number</div><div class="detail-val">{{driverPhone}}</div></div>
+            <div class="detail-item"><div class="detail-label">Email Address</div><div class="detail-val">{{driverEmail}}</div></div>
+            <div class="detail-item"><div class="detail-label">Bus Number</div><div class="detail-val">{{busNumber}}</div></div>
+            <div class="detail-item"><div class="detail-label">Assigned Bus</div><div class="detail-val">{{driverBusDisplay}}</div></div>
+            <div class="detail-item"><div class="detail-label">Assigned Route</div><div class="detail-val">{{routeName}}</div></div>
+            <div class="detail-item"><div class="detail-label">Licence Number</div><div class="detail-val">{{driverLicenseNumber}}</div></div>
+            <div class="detail-item"><div class="detail-label">Licence Expiry Date</div><div class="detail-val">{{driverLicenseExpiry}}</div></div>
+            <div class="detail-item"><div class="detail-label">Licence Class</div><div class="detail-val">{{driverLicenseClass}}</div></div>
+          </div>
+        </div>
+      </article>
+
+      <a class="btn btn-secondary page-back" href="student-dashboard.html">&larr; Back to Dashboard</a>
+    </main>
+  </div>
+</body>
+</html>

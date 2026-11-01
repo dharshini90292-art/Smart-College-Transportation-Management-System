@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Management Dashboard - Smart College Transportation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="overview-dashboard">
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="15" rx="3"></rect>
+            <path d="M3 9h18"></path>
+            <path d="M8 18v2"></path>
+            <path d="M16 18v2"></path>
+            <circle cx="7" cy="14" r="1.5" fill="#ffffff"></circle>
+            <circle cx="17" cy="14" r="1.5" fill="#ffffff"></circle>
+          </svg>
+        </div>
+        <span>Smart Transport Management</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="management-dashboard.html" class="nav-link active">Dashboard</a></li>
+          <li><a href="index.html" class="nav-logout-btn">Logout &rarr;</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-brand">Management Portal</div>
+      <nav class="sidebar-nav" aria-label="Management Dashboard Navigation">
+        <a href="management-profile.html" class="sidebar-link">My Profile</a>
+        <a href="management-dashboard.html" class="sidebar-link active" aria-current="page">Dashboard</a>
+        <a href="management-buses.html" class="sidebar-link">Buses</a>
+        <a href="management-routes.html" class="sidebar-link">Route Management</a>
+        <a href="management-students.html" class="sidebar-link">Students</a>
+        <a href="management-drivers.html" class="sidebar-link">Drivers</a>
+        <a href="management-stops.html" class="sidebar-link">Pickup Stops</a>
+        <a href="management-attendance.html" class="sidebar-link">Attendance</a>
+        <a href="management-fees.html" class="sidebar-link">Transport Fees</a>
+        <a href="management-complaints.html" class="sidebar-link">Review Complaints</a>
+        <a href="management-breakdown.html" class="sidebar-link">Breakdown Reports</a>
+        <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <main class="dashboard-main">
+
+    <!-- Dashboard Welcome Header -->
+    <section class="dashboard-header" id="mgmt-profile">
+      <div>
+        <span class="welcome-badge" style="background-color: #ecfdf5; color: #065f46;">
+          Administrative Command &bull; Master Control
+        </span>
+        <h1 class="dashboard-user-title">Welcome, Transport Directorate</h1>
+        <p class="dashboard-user-subtitle">Administrator Portal &bull; Central Institute of Engineering &amp; Technology (Main Campus)</p>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <a href="management-profile.html" title="My Profile"><img src="{{managementPhotoUrl}}" alt="Management Profile Photo" class="profile-avatar-header"></a>
+        <span class="user-status-pill badge-info">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          System Live &bull; Morning Shift
+        </span>
+      </div>
+    </section>
+
+    <section class="dashboard-overview-links" aria-label="Management dashboard page links">
+      <a class="dashboard-overview-link" href="management-profile.html"><strong>My Profile</strong>View management account details.</a>
+      <a class="dashboard-overview-link" href="management-buses.html"><strong>Buses</strong>Review the fleet and availability.</a>
+      <a class="dashboard-overview-link" href="management-routes.html"><strong>Route Management</strong>Configure verified locations and review optimized bus routes.</a>
+      <a class="dashboard-overview-link" href="management-students.html"><strong>Students</strong>View registered transport students.</a>
+      <a class="dashboard-overview-link" href="management-drivers.html"><strong>Drivers</strong>View driver assignments and contacts.</a>
+      <a class="dashboard-overview-link" href="management-stops.html"><strong>Pickup Stops</strong>Review stop and bus assignments.</a>
+      <a class="dashboard-overview-link" href="management-attendance.html"><strong>Attendance</strong>Review student transport attendance.</a>
+      <a class="dashboard-overview-link" href="management-fees.html"><strong>Transport Fees</strong>Review fee collection status.</a>
+      <a class="dashboard-overview-link" href="management-complaints.html"><strong>Review Complaints</strong>Review submissions and enter responses.</a>
+      <a class="dashboard-overview-link" href="management-breakdown.html"><strong>Breakdown Reports</strong>Review fleet incidents and maintenance.</a>
+    </section>
+
+    <!-- Top Key Metric Stat Cards -->
+    <section class="stats-grid" id="mgmt-dashboard">
+
+      <!-- Total Buses -->
+      <div class="stat-card">
+        <div class="stat-icon warning">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="5" width="20" height="13" rx="2"></rect>
+            <path d="M2 10h20"></path>
+            <circle cx="7" cy="15" r="1.5"></circle>
+            <circle cx="17" cy="15" r="1.5"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="stat-value">3 Buses</div>
+          <div class="stat-label">Fleet Size (40-Seats Each)</div>
+        </div>
+      </div>
+
+      <!-- Campus -->
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </div>
+        <div>
+          <div class="stat-value">1 Campus</div>
+          <div class="stat-label">Campus Hub</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Transport Authorization Overview Card -->
+    <div class="summary-cards-row" id="mgmt-fees">
+
+      <!-- Transport Authorization Overview -->
+      <article class="summary-card">
+        <h2 class="summary-card-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Transport Authorization
+        </h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px;">
+          <div style="background: #ffffff; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-light); text-align: center;">
+            <div style="font-size: 1.6rem; font-weight: 800; color: var(--green-success);">{{authorizedStudentsCount}}</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">AUTHORIZED</div>
+          </div>
+          <div style="background: #ffffff; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-light); text-align: center;">
+            <div style="font-size: 1.6rem; font-weight: 800; color: var(--bus-yellow);">{{unauthorizedStudentsCount}}</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">NOT AUTHORIZED</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Bus Breakdown & Maintenance Alert Box -->
+    <div class="alert-callout alert-info" id="mgmt-breakdown">
+      <div class="alert-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      </div>
+      <div>
+        <div class="alert-title">Fleet Operations Status</div>
+        <div class="alert-body">
+          College fleet buses are active. Review live vehicle assignments and student boarding attendance below.
+        </div>
+      </div>
+    </div>
+
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-title">Smart College Transportation Management System</div>
+      <p>&copy; 2026 CIET Transportation Division.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

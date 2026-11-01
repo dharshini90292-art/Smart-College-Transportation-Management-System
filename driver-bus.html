@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driver's Bus - Driver Transit Console</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar"><div class="nav-container"><div class="nav-brand">Smart Transport Management - Driver Console</div><a class="nav-logout-btn" href="index.html">Logout</a></div></header>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar"><div class="sidebar-brand">Driver Console</div><nav class="sidebar-nav" aria-label="Driver Dashboard Navigation">
+      <a href="driver-dashboard.html" class="sidebar-link">Dashboard</a>
+      <a href="driver-profile.html" class="sidebar-link">My Profile</a>
+      <a href="driver-bus.html" class="sidebar-link active" aria-current="page">Driver's Bus</a>
+      <a href="driver-route.html" class="sidebar-link">My Route</a>
+      <a href="driver-pickup-list.html" class="sidebar-link">Student Pickup List</a>
+      <a href="driver-attendance.html" class="sidebar-link">Student Attendance</a>
+      <a href="driver-bus-status.html" class="sidebar-link">Bus Status</a>
+      <a href="driver-breakdown.html" class="sidebar-link">Breakdown Reports</a>
+      <a href="driver-complaints.html" class="sidebar-link">Complaints</a>
+      <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+    </nav></aside>
+    <main class="dashboard-main">
+      <section class="dashboard-header"><div><span class="welcome-badge">Vehicle Assignment</span><h1 class="dashboard-user-title">Driver's Bus</h1><p class="dashboard-user-subtitle">Vehicle details and operational assignment.</p></div></section>
+      <article class="info-card"><div class="info-card-header"><h2 class="info-card-title">{{driverBus}}</h2><span class="badge badge-success">Operational</span></div><div class="info-card-body"><div class="details-grid">
+        <div class="detail-item"><div class="detail-label">Bus Identifier</div><div class="detail-val">{{busId}}</div></div>
+        <div class="detail-item"><div class="detail-label">Route Coverage</div><div class="detail-val">{{routeName}}</div></div>
+        <div class="detail-item"><div class="detail-label">Capacity</div><div class="detail-val">{{busCapacity}}</div></div>
+        <div class="detail-item"><div class="detail-label">Assigned Students</div><div class="detail-val">{{assignedStudentCount}}</div></div>
+        <div class="detail-item"><div class="detail-label">Status</div><div class="detail-val">Active Duty</div></div>
+        <div class="detail-item"><div class="detail-label">Campus Destination</div><div class="detail-val">CIET Main Campus</div></div>
+      </div></div></article>
+      <a class="btn btn-secondary page-back" href="driver-dashboard.html">&larr; Back to Dashboard</a>
+    </main>
+  </div>
+</body>
+</html>

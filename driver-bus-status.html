@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus Status - Driver Transit Console</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar"><div class="nav-container"><div class="nav-brand">Smart Transport Management - Driver Console</div><a class="nav-logout-btn" href="index.html">Logout</a></div></header>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar"><div class="sidebar-brand">Driver Console</div><nav class="sidebar-nav" aria-label="Driver Dashboard Navigation">
+      <a href="driver-dashboard.html" class="sidebar-link">Dashboard</a>
+      <a href="driver-profile.html" class="sidebar-link">My Profile</a>
+      <a href="driver-bus.html" class="sidebar-link">Driver's Bus</a>
+      <a href="driver-route.html" class="sidebar-link">My Route</a>
+      <a href="driver-pickup-list.html" class="sidebar-link">Student Pickup List</a>
+      <a href="driver-attendance.html" class="sidebar-link">Student Attendance</a>
+      <a href="driver-bus-status.html" class="sidebar-link active" aria-current="page">Bus Status</a>
+      <a href="driver-breakdown.html" class="sidebar-link">Breakdown Reports</a>
+      <a href="driver-complaints.html" class="sidebar-link">Complaints</a>
+      <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+    </nav></aside>
+    <main class="dashboard-main">
+      <section class="dashboard-header"><div><span class="welcome-badge">Fleet Operations</span><h1 class="dashboard-user-title">Bus Status</h1><p class="dashboard-user-subtitle">Current status for your assigned vehicle.</p></div><span class="badge badge-success">Operational</span></section>
+      <article class="info-card"><div class="info-card-header"><h2 class="info-card-title">Bus #02 - KA-04-TR-1022</h2></div><div class="info-card-body"><div class="details-grid">
+        <div class="detail-item"><div class="detail-label">Vehicle Health</div><div class="detail-val">Normal - All systems operational</div></div>
+        <div class="detail-item"><div class="detail-label">Inspection</div><div class="detail-val">Passed</div></div>
+        <div class="detail-item"><div class="detail-label">Speed Limiter</div><div class="detail-val">50 km/h active</div></div>
+        <div class="detail-item"><div class="detail-label">First Aid / Fire Kit</div><div class="detail-val">Verified</div></div>
+        <div class="detail-item"><div class="detail-label">Fuel</div><div class="detail-val">CNG</div></div>
+        <div class="detail-item"><div class="detail-label">Emergency Dispatch</div><div class="detail-val">080-2699-0011</div></div>
+      </div></div></article>
+      <a class="btn btn-secondary page-back" href="driver-dashboard.html">&larr; Back to Dashboard</a>
+    </main>
+  </div>
+</body>
+</html>

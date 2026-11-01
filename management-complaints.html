@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review Complaints - Smart Transport Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar"><div class="nav-container"><div class="nav-brand">Smart Transport Management - Fleet Operations</div><a class="nav-logout-btn" href="index.html">Logout</a></div></header>
+  <div class="dashboard-layout"><aside class="dashboard-sidebar"><div class="sidebar-brand">Management Portal</div><nav class="sidebar-nav" aria-label="Management Dashboard Navigation">
+    <a href="management-profile.html" class="sidebar-link">My Profile</a><a href="management-dashboard.html" class="sidebar-link">Dashboard</a>
+    <a href="management-buses.html" class="sidebar-link">Buses</a><a href="management-students.html" class="sidebar-link">Students</a>
+    <a href="management-drivers.html" class="sidebar-link">Drivers</a><a href="management-stops.html" class="sidebar-link">Pickup Stops</a>
+    <a href="management-attendance.html" class="sidebar-link">Attendance</a><a href="management-fees.html" class="sidebar-link">Transport Fees</a>
+    <a href="management-complaints.html" class="sidebar-link active" aria-current="page">Review Complaints</a><a href="management-breakdown.html" class="sidebar-link">Breakdown Reports</a>
+    <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+  </nav></aside>
+  <main class="dashboard-main">
+    <section class="dashboard-header"><div><span class="welcome-badge">Student and Driver Support</span><h1 class="dashboard-user-title">Review Complaints</h1><p class="dashboard-user-subtitle">Review transport submissions and manage resolution responses.</p></div></section>
+    {{updateMessage}}
+    <div class="complaint-review-list">
+      {{complaintReviewItems}}
+    </div>
+    <a class="btn btn-secondary page-back" href="management-dashboard.html">&larr; Back to Dashboard</a>
+  </main></div>
+</body>
+</html>

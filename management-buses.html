@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buses - Management Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar"><div class="nav-container"><div class="nav-brand">Smart Transport Management - Fleet Operations</div><a class="nav-logout-btn" href="index.html">Logout</a></div></header>
+  <div class="dashboard-layout"><aside class="dashboard-sidebar"><div class="sidebar-brand">Management Portal</div><nav class="sidebar-nav" aria-label="Management Dashboard Navigation">
+    <a href="management-profile.html" class="sidebar-link">My Profile</a><a href="management-dashboard.html" class="sidebar-link">Dashboard</a>
+    <a href="management-buses.html" class="sidebar-link active" aria-current="page">Buses</a><a href="management-students.html" class="sidebar-link">Students</a>
+    <a href="management-drivers.html" class="sidebar-link">Drivers</a><a href="management-stops.html" class="sidebar-link">Pickup Stops</a>
+    <a href="management-attendance.html" class="sidebar-link">Attendance</a><a href="management-fees.html" class="sidebar-link">Transport Fees</a>
+    <a href="management-complaints.html" class="sidebar-link">Review Complaints</a><a href="management-breakdown.html" class="sidebar-link">Breakdown Reports</a>
+    <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+  </nav></aside>
+  <main class="dashboard-main">
+    <section class="dashboard-header"><div><span class="welcome-badge">Fleet Records</span><h1 class="dashboard-user-title">Buses</h1><p class="dashboard-user-subtitle">Vehicle capacity, route coverage, and availability.</p></div></section>
+    <article class="info-card">
+      <div class="info-card-header">
+        <h2 class="info-card-title">Fleet Operations Management</h2>
+        <span class="badge badge-success">Active Operations</span>
+      </div>
+      <div class="info-card-body">
+        <p class="registration-empty" style="margin-bottom: 20px;">
+          Vehicle fleet records and operational routes are actively synchronized with real-time student allocations and driver manifests.
+        </p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="management-routes.html" class="btn btn-primary">Live Route Planner &amp; Dijkstra Maps &rarr;</a>
+          <a href="management-drivers.html" class="btn btn-secondary">Driver Assignments &rarr;</a>
+          <a href="management-stops.html" class="btn btn-secondary">Pickup Stops Directory &rarr;</a>
+        </div>
+      </div>
+    </article>
+    <a class="btn btn-secondary page-back" href="management-dashboard.html">&larr; Back to Dashboard</a>
+  </main></div>
+</body>
+</html>

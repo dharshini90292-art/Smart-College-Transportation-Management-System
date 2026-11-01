@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - Smart Transport Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar"><div class="nav-container"><div class="nav-brand">Smart Transport Management - Driver Console</div><a class="nav-logout-btn" href="index.html">Logout</a></div></header>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar"><div class="sidebar-brand">Driver Console</div><nav class="sidebar-nav" aria-label="Driver Dashboard Navigation">
+      <a href="driver-dashboard.html" class="sidebar-link">Dashboard</a>
+      <a href="driver-profile.html" class="sidebar-link active" aria-current="page">My Profile</a>
+      <a href="driver-bus.html" class="sidebar-link">Driver's Bus</a>
+      <a href="driver-route.html" class="sidebar-link">My Route</a>
+      <a href="driver-pickup-list.html" class="sidebar-link">Student Pickup List</a>
+      <a href="driver-attendance.html" class="sidebar-link">Student Attendance</a>
+      <a href="driver-bus-status.html" class="sidebar-link">Bus Status</a>
+      <a href="driver-breakdown.html" class="sidebar-link">Breakdown Reports</a>
+      <a href="driver-complaints.html" class="sidebar-link">Complaints</a>
+      <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+    </nav></aside>
+    <main class="dashboard-main">
+      <section class="dashboard-header"><div><h1 class="dashboard-user-title">My Profile</h1><p class="dashboard-user-subtitle">Driver account and duty details.</p></div></section>
+      {{saveMessage}}
+      <!-- SAVE_MESSAGE -->
+      <article class="info-card profile-photo-card">
+        <div class="info-card-body profile-header-flex">
+          <div class="profile-avatar-wrapper">
+            <img src="{{profilePhotoUrl}}" alt="Driver Profile Photo" class="profile-avatar-img">
+          </div>
+          <div class="profile-header-info">
+            <h2 style="margin:0 0 4px 0; color:var(--navy-primary, #ffffff);">{{name}}</h2>
+            <p style="margin:0 0 10px 0; color:var(--text-muted, #94a3b8);">Staff ID: {{driverId}} &bull; Assigned Bus: {{assignedBus}}</p>
+            <form action="/upload-profile-photo" method="post" enctype="multipart/form-data" class="photo-upload-form">
+              <input type="file" name="profilePhoto" class="photo-file-input" accept=".jpg,.jpeg,.png" required>
+              <button type="submit" class="btn btn-primary btn-sm">Update Photo</button>
+            </form>
+          </div>
+        </div>
+      </article>
+      <article class="info-card"><div class="info-card-header"><h2 class="info-card-title">Driver Details</h2><span class="badge badge-success">Active Duty</span></div><div class="info-card-body"><div class="details-grid">
+        <div class="detail-item"><div class="detail-label">Full Name</div><div class="detail-val">{{name}}</div></div>
+        <div class="detail-item"><div class="detail-label">Driver ID</div><div class="detail-val">{{driverId}}</div></div>
+        <div class="detail-item"><div class="detail-label">Role</div><div class="detail-val">College Bus Driver</div></div>
+        <div class="detail-item"><div class="detail-label">Phone</div><div class="detail-val">{{phone}}</div></div>
+        <div class="detail-item"><div class="detail-label">Email Address</div><div class="detail-val">{{email}}</div></div>
+        <div class="detail-item"><div class="detail-label">Residential Address</div><div class="detail-val">{{address}}</div></div>
+        <div class="detail-item"><div class="detail-label">Assigned Bus</div><div class="detail-val">{{assignedBus}}</div></div>
+        <div class="detail-item"><div class="detail-label">Driving Licence Number</div><div class="detail-val">{{licenseNumber}}</div></div>
+        <div class="detail-item"><div class="detail-label">Licence Class</div><div class="detail-val">{{licenseClass}}</div></div>
+        <div class="detail-item"><div class="detail-label">Licence Expiry Date</div><div class="detail-val">{{licenseExpiry}}</div></div>
+      </div></div></article>
+      <details class="profile-editor">
+        <summary class="btn btn-primary">Edit Profile</summary>
+        <form action="driver-profile.html" method="post" class="profile-edit-form">
+          <div class="details-grid">
+            <div class="form-group"><label class="form-label" for="driver-name">Full Name</label><input class="form-control" id="driver-name" name="name" type="text" value="{{nameInput}}" required maxlength="100"></div>
+            <div class="form-group"><label class="form-label" for="driver-phone">Phone Number</label><input class="form-control" id="driver-phone" name="phone" type="tel" value="{{phoneInput}}" maxlength="32"></div>
+            <div class="form-group"><label class="form-label" for="driver-email">Email Address</label><input class="form-control" id="driver-email" name="email" type="email" value="{{emailInput}}" maxlength="150"></div>
+            <div class="form-group"><label class="form-label" for="driver-address">Residential Address</label><textarea class="form-control" id="driver-address" name="address" maxlength="250">{{addressInput}}</textarea></div>
+            <div class="form-group"><label class="form-label" for="driver-license-number">Driving Licence Number</label><input class="form-control" id="driver-license-number" name="licenseNumber" type="text" value="{{licenseNumberInput}}" maxlength="50"></div>
+            <div class="form-group"><label class="form-label" for="driver-license-class">Licence Class</label><input class="form-control" id="driver-license-class" name="licenseClass" type="text" value="{{licenseClassInput}}" maxlength="50" placeholder="e.g. Heavy Transport Vehicle (HTV)"></div>
+            <div class="form-group"><label class="form-label" for="driver-license-expiry">Licence Expiry Date</label><input class="form-control" id="driver-license-expiry" name="licenseExpiry" type="date" value="{{licenseExpiryInput}}"></div>
+          </div>
+          <div class="profile-edit-actions">
+            <button class="btn btn-primary" type="submit">Save Changes</button>
+            <a class="btn btn-secondary" href="driver-profile.html">Cancel</a>
+          </div>
+        </form>
+      </details>
+      <a class="btn btn-secondary page-back" href="driver-dashboard.html">&larr; Back to Dashboard</a>
+    </main>
+  </div>
+</body>
+</html>

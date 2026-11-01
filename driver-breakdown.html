@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breakdown Reports - Driver Transit Console</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar"><div class="nav-container"><div class="nav-brand">Smart Transport Management - Driver Console</div><a class="nav-logout-btn" href="index.html">Logout</a></div></header>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar"><div class="sidebar-brand">Driver Console</div><nav class="sidebar-nav" aria-label="Driver Dashboard Navigation">
+      <a href="driver-dashboard.html" class="sidebar-link">Dashboard</a>
+      <a href="driver-profile.html" class="sidebar-link">My Profile</a>
+      <a href="driver-bus.html" class="sidebar-link">Driver's Bus</a>
+      <a href="driver-route.html" class="sidebar-link">My Route</a>
+      <a href="driver-pickup-list.html" class="sidebar-link">Student Pickup List</a>
+      <a href="driver-attendance.html" class="sidebar-link">Student Attendance</a>
+      <a href="driver-bus-status.html" class="sidebar-link">Bus Status</a>
+      <a href="driver-breakdown.html" class="sidebar-link active" aria-current="page">Breakdown Reports</a>
+      <a href="driver-complaints.html" class="sidebar-link">Complaints</a>
+      <a href="index.html" class="sidebar-link sidebar-logout-link">Logout</a>
+    </nav></aside>
+    <main class="dashboard-main">
+      <section class="dashboard-header"><div><span class="welcome-badge">Fleet Maintenance Log &bull; {{assignedBus}}</span><h1 class="dashboard-user-title">Breakdown Reports</h1><p class="dashboard-user-subtitle">Report vehicle breakdowns, log maintenance issues, and update incident progress.</p></div></section>
+      {{breakdownMessage}}
+      <!-- BREAKDOWN_MESSAGE -->
+      <article class="info-card registration-card">
+        <div class="info-card-header">
+          <h2 class="info-card-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            Create New Breakdown Report
+          </h2>
+        </div>
+        <div class="info-card-body">
+          <form action="driver-breakdown.html" method="post" class="registration-form">
+            <input type="hidden" name="action" value="create">
+            <div class="form-group">
+              <label class="form-label" for="busId">Assigned Bus</label>
+              <input class="form-control" type="text" id="busId" name="busId" value="{{assignedBusId}}" readonly required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="breakdownDate">Breakdown Date &amp; Time</label>
+              <input class="form-control" type="datetime-local" id="breakdownDate" name="breakdownDate" value="{{currentDateTime}}" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="severity">Severity Level</label>
+              <select class="form-control" id="severity" name="severity" required>
+                <option value="Low">Low (Minor issue, vehicle operable)</option>
+                <option value="Medium" selected>Medium (Requires scheduled attention)</option>
+                <option value="High">High (Impacting route performance)</option>
+                <option value="Critical">Critical (Immediate stop, relief bus needed)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="status">Initial Status</label>
+              <select class="form-control" id="status" name="status" required>
+                <option value="Reported" selected>Reported</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Resolved">Resolved</option>
+              </select>
+            </div>
+            <div class="form-group" style="grid-column: 1 / -1;">
+              <label class="form-label" for="issueDescription">Issue Description</label>
+              <textarea class="form-control" id="issueDescription" name="issueDescription" placeholder="Describe the vehicle breakdown or mechanical issue..." required maxlength="500"></textarea>
+            </div>
+            <div class="form-group" style="grid-column: 1 / -1;">
+              <label class="form-label" for="actionTaken">Initial Action Taken (Optional)</label>
+              <textarea class="form-control" id="actionTaken" name="actionTaken" placeholder="e.g. Pulled over safely, contacted supervisor, requested relief van..." maxlength="500"></textarea>
+            </div>
+            <div class="form-group" style="grid-column: 1 / -1;">
+              <label class="form-label" for="remarks">Remarks / Notes (Optional)</label>
+              <textarea class="form-control" id="remarks" name="remarks" placeholder="Additional observations, location details, etc..." maxlength="500"></textarea>
+            </div>
+            <div class="registration-actions">
+              <button type="submit" class="btn btn-primary">Submit Breakdown Report</button>
+              <button type="reset" class="btn btn-secondary">Reset Form</button>
+            </div>
+          </form>
+        </div>
+      </article>
+
+      <article class="info-card">
+        <div class="info-card-header">
+          <h2 class="info-card-title">My Breakdown Reports &amp; Status Updates</h2>
+        </div>
+        <div class="info-card-body">
+          {{breakdownReportItems}}
+        </div>
+      </article>
+      <a class="btn btn-secondary page-back" href="driver-dashboard.html">&larr; Back to Dashboard</a>
+    </main>
+  </div>
+</body>
+</html>
